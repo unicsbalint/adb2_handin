@@ -18,7 +18,7 @@ namespace adb2_handInProject
         {
             InitializeComponent();
         }
-
+        public static string isAdmin = "";
         private void bt_newLogin_Click(object sender, EventArgs e)
         {
             OracleConnection connection = new OracleConnection();
@@ -26,12 +26,18 @@ namespace adb2_handInProject
             connection.Open();
             OracleCommand command = new OracleCommand();
             command.CommandType = CommandType.Text;
-            string cmd = string.Format("SELECT username,userpassword FROM users WHERE username = \'{0}\' AND userpassword = \'{1}\'",tb_username.Text,tb_password.Text);
+            string cmd = string.Format("SELECT username,userpassword,isadmin FROM users WHERE username = \'{0}\' AND userpassword = \'{1}\'",tb_username.Text,tb_password.Text);
             command.CommandText = cmd;
             command.Connection = connection;
             OracleDataReader reader = command.ExecuteReader();
+            
             if (reader.HasRows)
             {
+                if (reader.Read())
+                {
+                    isAdmin = reader["isadmin"].ToString();
+                }
+
                 connection.Close();
                 Thread thread = new Thread(openMain);  
                 thread.SetApartmentState(ApartmentState.STA);

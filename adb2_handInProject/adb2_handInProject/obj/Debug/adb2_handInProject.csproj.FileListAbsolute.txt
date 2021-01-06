@@ -11,3 +11,17 @@ C:\Users\Balint\Desktop\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_han
 C:\Users\Balint\Desktop\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.pdb
 C:\Users\Balint\Desktop\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.loginForm.resources
 C:\Users\Balint\Desktop\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.Main.resources
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\bin\Debug\adb2_handInProject.exe.config
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\bin\Debug\adb2_handInProject.exe
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\bin\Debug\adb2_handInProject.pdb
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.csprojAssemblyReference.cache
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.Main.resources
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.loginForm.resources
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.Properties.Resources.resources
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.csproj.GenerateResource.cache
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.csproj.CoreCompileInputs.cache
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.csproj.CopyComplete
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.exe
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.pdb
+C:\Users\Balint\Desktop\adb2_handin\adb2_handInProject\adb2_handInProject\obj\Debug\adb2_handInProject.register.resources

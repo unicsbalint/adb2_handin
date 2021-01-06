@@ -1,21 +1,4 @@
-CREATE TABLE students (
-studentId number(5) PRIMARY KEY,
-studentName varchar2(20),
-studentAge number(2)
-);
-CREATE TABLE borrows (
-borrowId number(5) PRIMARY KEY,
-studentId number(5) constraint studentId references students(studentId),
-bookId number(5) constraint bookId references books(bookId) 
-);
-CREATE TABLE books (
-bookId number(5) Primary key,
-bookName varchar2(200),
-authorId number(5) constraint authorId references author(authorId)
-);
-
-
-//AUTHOR
+--AUTHOR
 CREATE TABLE author (
 authorId number(5) Primary key,
 authorName varchar(200),
@@ -42,11 +25,65 @@ END;
     
 ALTER TRIGGER "T_AUTHOR_AUTHORID" ENABLE; 
 
-//ENDAUTHOR
+--ENDAUTHOR
+
+--BOOKS
+CREATE TABLE books (
+bookId number(5) Primary key,
+bookName varchar2(200),
+authorId number(5) constraint authorId references author(authorId)
+);
+
+CREATE SEQUENCE S_BOOKS
+START WITH 1001
+INCREMENT BY 1
+CACHE 2000;
+
+CREATE OR REPLACE TRIGGER T_BOOKS_BOOKID
+BEFORE INSERT
+ON BOOKS
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+    if(:new.BOOKID is null) then
+    SELECT S_BOOKS.nextval
+    INTO :new.BOOKID
+    FROM dual;
+    end if;
+END;
+    
+ALTER TRIGGER "T_BOOKS_BOOKID" ENABLE;
+--ENDBOOKS
+
+--students
+CREATE TABLE students (
+studentId number(5) PRIMARY KEY,
+studentName varchar2(20),
+studentAge number(2)
+);
+
+--endstudents
+CREATE TABLE borrows (
+borrowId number(5) PRIMARY KEY,
+studentId number(5) constraint studentId references students(studentId),
+bookId number(5) constraint bookId references books(bookId) 
+);
 
 
 
-//SOME DUMMY DATA
+
+
+
+--USERS
+CREATE TABLE users(
+userName varchar2(200) primary key,
+userPassword varchar2(200),
+isAdmin number null
+);
+INSERT INTO users (userName,userPassword) VALUES ('admin','admin');
+--ENDUSERS
+
+--SOME DUMMY DATA
 INSERT INTO author (authorId,authorName,numberofBooks) VALUES (1,'Kiss Pal',42);
 INSERT INTO author (authorId,authorName,numberofBooks) VALUES (2,'Nagy Zoltan Pal',2);
 INSERT INTO author (authorId,authorName,numberofBooks) VALUES (3,'Fekete Ferenc',12);
@@ -72,11 +109,5 @@ INSERT INTO borrows (borrowId,studentId,bookId) VALUES (2003,3005,1003);
 INSERT INTO borrows (borrowId,studentId,bookId) VALUES (2004,3003,1002);
 INSERT INTO borrows (borrowId,studentId,bookId) VALUES (2005,3004,1006);
 
-CREATE TABLE users(
-userId number(5) primary key,
-userName varchar2(200),
-userPassword varchar2(200)
-);
-INSERT INTO users (userId,userName,userPassword) VALUES (1,'admin','admin');
 
 
