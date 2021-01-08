@@ -62,16 +62,55 @@ studentName varchar2(20),
 studentAge number(2)
 );
 
+CREATE SEQUENCE S_STUDENTS
+START WITH 3001
+INCREMENT BY 1
+CACHE 9000;
+
+CREATE OR REPLACE TRIGGER T_STUDENTS_STUDENTID
+BEFORE INSERT
+ON STUDENTS
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+    if(:new.STUDENTID is null) then
+    SELECT S_STUDENTS.nextval
+    INTO :new.STUDENTID
+    FROM dual;
+    end if;
+END;
+    
+ALTER TRIGGER "T_STUDENTS_STUDENTID" ENABLE;
 --endstudents
+
+
+--BORROWS
 CREATE TABLE borrows (
 borrowId number(5) PRIMARY KEY,
 studentId number(5) constraint studentId references students(studentId),
 bookId number(5) constraint bookId references books(bookId) 
 );
 
+CREATE SEQUENCE S_BORROWS
+START WITH 2001
+INCREMENT BY 1
+CACHE 3000;
 
-
-
+CREATE OR REPLACE TRIGGER T_BORROWS_BORROWID
+BEFORE INSERT
+ON BORROWS
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+    if(:new.BORROWID is null) then
+    SELECT S_BORROWS.nextval
+    INTO :new.BORROWID
+    FROM dual;
+    end if;
+END;
+    
+ALTER TRIGGER "T_BORROWS_BORROWID" ENABLE;
+--ENDBORROWS
 
 
 --USERS

@@ -11,8 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 /*
          * Teendők:
-         * Dummy adatokkal feltöltés megvalósítása C# -on belül, auto increment implementálása oracleben, 
-         * authorid tartomány: 1-1000, bookid tartomány 1001-2000, borrowid tartomány: 2001-3000, studentid tartomány: 3001-9000,         
+         * Dummy adatokkal feltöltés megvalósítása C# -on belül, auto increment implementálása oracleben,
+         * students, borrows fül felépítése az eddigiek alapján.
+         * authorid tartomány: 1-1000, bookid tartomány 1001-2000, borrowid tartomány: 2001-3000, studentid tartomány: 3001-,         
          * */
 namespace adb2_handInProject
 {
@@ -26,6 +27,9 @@ namespace adb2_handInProject
                 bt_usersList.Enabled = false;
                 bt_user_list_delete.Enabled = false;
             }
+            ListAuthors();
+            ListBooks();
+            ListStudents();
             maxIDs();
             label_maxauthorID.Text = maxAuthorID.ToString();
             label_maxBooksID.Text = maxBookID.ToString();
@@ -386,9 +390,9 @@ namespace adb2_handInProject
 
         #endregion
 
-        //Student tab
 
         //users tab
+        #region
         private void bt_usersList_Click(object sender, EventArgs e)
         {
             users_List.Items.Clear();
@@ -411,8 +415,168 @@ namespace adb2_handInProject
         {
             
             register reg = new register();
-            reg.Show();
-            
+            reg.Show();           
+        }
+
+        #endregion
+
+        //Tanulók
+        #region
+        #endregion
+        public void ListStudents()
+        {
+            students_List.Items.Clear();
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.CommandType = CommandType.Text;
+            string cmd = string.Format("SELECT * FROM STUDENTS ORDER BY STUDENTID");
+            command.CommandText = cmd;
+            command.Connection = connection;
+            OracleDataReader reader = command.ExecuteReader();
+            students_List.Items.Add("StudentID | Student Name | age");
+            while (reader.Read())
+            {
+                students_List.Items.Add(string.Format("{0}| {1} | {2}", reader["STUDENTID"].ToString(), reader["STUDENTNAME"].ToString(), reader["STUDENTAGE"].ToString()));
+            }
+        }
+        private void bt_Students_list_Click(object sender, EventArgs e)
+        {
+            ListStudents();
+        }
+
+        private void bt_Students_delete_Click(object sender, EventArgs e)
+        {
+
+            string selected = students_List.SelectedItem.ToString();
+            string id = "";
+            for (int i = 0; i < selected.Length; i++)
+            {
+                if (selected[i] != '|')
+                {
+                    id = id + selected[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.CommandType = CommandType.Text;
+            string cmd = string.Format("DELETE FROM STUDENTS WHERE STUDENTID = {0}", id);
+            command.CommandText = cmd;
+            command.Connection = connection;
+            try
+            {
+                command.ExecuteNonQuery();
+                ListStudents();
+            }
+
+            catch (OracleException)
+            {
+                MessageBox.Show("Nem törölhető adat, mert egy másik táblában idegen kulcsként szolgál.");
+            }
+        }
+
+        private void bt_students_add_Click(object sender, EventArgs e)
+        {
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.CommandType = CommandType.Text;
+            string cmd = string.Format("INSERT INTO STUDENTS (STUDENTNAME,STUDENTAGE) VALUES ('{0}',{1})", tb_students_add_student_name.Text, tb_students_add_age.Text);
+            command.CommandText = cmd;
+            command.Connection = connection;
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Oracle.ManagedDataAccess.Client.OracleException)
+            {
+
+                MessageBox.Show("Ellenőrizd, hogy létezik -e már ilyen kulccsal bejegyzés.");
+            }
+            ListStudents();
+        }
+
+        private void bt_students_modify_Click(object sender, EventArgs e)
+        {
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            string cmd = string.Format("UPDATE STUDENTS SET STUDENTNAME = '{0}', STUDENTAGE = {1} WHERE STUDENTID = {2}", tb_students_modify_studentName.Text,tb_students_modify_studentAge.Text,tb_students_modify_studentId.Text);
+            command.CommandText = cmd;
+            command.ExecuteNonQuery();
+            ListStudents();
+        }
+        static string randomStudents()
+        {
+            List<string> first_name = new List<string>();
+            List<string> last_name = new List<string>();
+            Random a = new Random();
+
+            first_name.Add("Nagy");
+            first_name.Add("Dummy");
+            first_name.Add("Baráthy");
+            first_name.Add("Holecz");
+            first_name.Add("Fekete");
+            first_name.Add("Lakatos");
+            first_name.Add("Cserneczky");
+            first_name.Add("Oravecz");
+            first_name.Add("Bakos");
+            first_name.Add("Surányi");
+            first_name.Add("Váradi");
+
+            last_name.Add("Bálint");
+            last_name.Add("Fruzsina");
+            last_name.Add("Levente");
+            last_name.Add("Norbert");
+            last_name.Add("Márk");
+            last_name.Add("Renáta");
+            last_name.Add("Tünde");
+            last_name.Add("Erik");
+            last_name.Add("Balázs");
+            last_name.Add("Zoltán");
+
+
+
+
+            return first_name[a.Next(0,first_name.Count)] + " " + last_name[a.Next(0, last_name.Count)];
+        }
+        private void bt_students_dummyData_Click(object sender, EventArgs e)
+        {
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+            Random rnd = new Random();
+            for (int i = 0; i < int.Parse(tb_students_N_dummyData.Text); i++)
+            {
+                string cmd = string.Format("INSERT INTO STUDENTS (STUDENTNAME,STUDENTAGE) VALUES ('{0}',{1})", randomStudents(), rnd.Next(7,15));
+                command.CommandText = cmd;
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (OracleException)
+                {
+
+                    MessageBox.Show("Valami nem jó");
+                }
+            }
+            ListStudents();
         }
     }
 }
