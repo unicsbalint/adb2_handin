@@ -33,6 +33,9 @@ namespace adb2_handInProject
                 {
                     command.ExecuteNonQuery();
                     MessageBox.Show("Sikeres regisztráció");
+                    cmd = string.Format("INSERT INTO LOG (LOG_MESSAGE) VALUES ('USER {0} REGISTERED')", tb_username.Text);
+                    command.CommandText = cmd;
+                    command.ExecuteNonQuery();
                 }
                 catch (Oracle.ManagedDataAccess.Client.OracleException)
                 {

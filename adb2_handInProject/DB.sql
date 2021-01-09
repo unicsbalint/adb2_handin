@@ -122,6 +122,10 @@ isAdmin number null
 INSERT INTO users (userName,userPassword) VALUES ('admin','admin');
 --ENDUSERS
 
+CREATE  TABLE LOG(
+log_message varchar(250)
+);
+
 --SOME DUMMY DATA
 INSERT INTO author (authorId,authorName,numberofBooks) VALUES (1,'Kiss Pal',42);
 INSERT INTO author (authorId,authorName,numberofBooks) VALUES (2,'Nagy Zoltan Pal',2);

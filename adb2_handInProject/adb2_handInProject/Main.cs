@@ -24,12 +24,40 @@ namespace adb2_handInProject
             InitializeComponent();
             if (loginForm.isAdmin != "1")
             {
+                //users tab
+                label_privilege.Text = "USER";
                 bt_usersList.Enabled = false;
                 bt_user_list_delete.Enabled = false;
+                //author tab
+                bt_author_Add.Enabled = false;
+                button2.Enabled = false; //delete
+                bt_author_dummyData.Enabled = false;
+                bt_author_modify.Enabled = false;
+                //books tab
+                bt_books_Add.Enabled = false;
+                bt_books_delete.Enabled = false;
+                bt_books_modify.Enabled = false;
+                bt_books_dummyData.Enabled = false;
+                //students tab
+                bt_students_add.Enabled = false;
+                bt_Students_delete.Enabled = false;
+                bt_students_modify.Enabled = false;
+                bt_students_dummyData.Enabled = false;
+                //borrows tab
+                bt_Borrows_add.Enabled = false;
+                bt_borrows_delete.Enabled = false;
+                bt_Borrows_Modify.Enabled = false;
+                bt_borrows_DummyData.Enabled = false;
             }
+            else
+            {
+                label_privilege.Text = "ADMINISTRATOR";
+            }
+            label_currectUser.Text = loginForm.loggedInUser;
             ListAuthors();
             ListBooks();
             ListStudents();
+            ListBorrows();
             maxIDs();
             label_maxauthorID.Text = maxAuthorID.ToString();
             label_maxBooksID.Text = maxBookID.ToString();
@@ -38,6 +66,7 @@ namespace adb2_handInProject
 
         static int maxAuthorID = 0;
         static int maxBookID = 0;
+        static int maxStudentID = 0;
         public void maxIDs()
         {
             //
@@ -62,6 +91,13 @@ namespace adb2_handInProject
             while (reader.Read())
             {
                 maxBookID = int.Parse(reader["MAX(BOOKID)"].ToString());
+            }
+            cmd = string.Format("SELECT MAX(STUDENTID) FROM STUDENTS");
+            command.CommandText = cmd;
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                maxStudentID = int.Parse(reader["MAX(STUDENTID)"].ToString());
             }
         }
         //Authors tab
@@ -208,9 +244,7 @@ namespace adb2_handInProject
             
             
         }
-
-       
-
+ 
         private void bt_author_dummyData_Click(object sender, EventArgs e)
         {
 
@@ -225,8 +259,16 @@ namespace adb2_handInProject
             {
                 string cmd = string.Format("INSERT INTO author (authorName,numberofBooks) VALUES ('{0}',{1})", randomName(),rnd.Next(1,100));
                 command.CommandText = cmd;
-                command.ExecuteNonQuery();
+                try
+                {
+                    command.ExecuteNonQuery();
+                }            
+                catch (OracleException)
+                {
+                    MessageBox.Show(" integrity constraint violated");
+                }
             }
+            ListAuthors();
         }
         #endregion
 
@@ -324,10 +366,11 @@ namespace adb2_handInProject
             OracleCommand command = new OracleCommand();
             command.CommandType = CommandType.Text;
             command.Connection = connection;
+            maxIDs();
             Random rnd = new Random();
             for (int i = 0; i < int.Parse(tb_books_N_Dummydata.Text); i++)
             {
-                string cmd = string.Format("INSERT INTO BOOKS (BOOKNAME,AUTHORID) VALUES ('{0}',{1})", randomBookName(), rnd.Next(1, maxAuthorID-1));
+                string cmd = string.Format("INSERT INTO BOOKS (BOOKNAME,AUTHORID) VALUES ('{0}',{1})", randomBookName(), rnd.Next(1, maxAuthorID));
                 command.CommandText = cmd;
                 try
                 {
@@ -339,6 +382,7 @@ namespace adb2_handInProject
                     MessageBox.Show("Valami nem jó");
                 }
             }
+            ListBooks();
         }
 
         private void bt_books_Add_Click(object sender, EventArgs e)
@@ -412,17 +456,53 @@ namespace adb2_handInProject
             }
         }
         private void bt_register_Click(object sender, EventArgs e)
-        {
-            
+        {          
             register reg = new register();
             reg.Show();           
+        }
+        private void bt_user_list_delete_Click(object sender, EventArgs e)
+        {
+            string selected = users_List.SelectedItem.ToString();
+            string id = "";
+            for (int i = 0; i < selected.Length; i++)
+            {
+                if (selected[i] != '|')
+                {
+                    id = id + selected[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.CommandType = CommandType.Text;
+            string cmd = string.Format("DELETE FROM USERS WHERE USERNAME='{0}'", id);
+            command.CommandText = cmd;
+            command.Connection = connection;
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+
+            catch (OracleException)
+            {
+                MessageBox.Show("Nem törölhető adat");
+            }
+            cmd = string.Format("INSERT INTO LOG (LOG_MESSAGE) VALUES ('USER {0} DELETED BY {1}')", id, loginForm.loggedInUser);
+            command.CommandText = cmd;
+            command.ExecuteNonQuery();
         }
 
         #endregion
 
-        //Tanulók
+        //Students tab
         #region
-        #endregion
+
         public void ListStudents()
         {
             students_List.Items.Clear();
@@ -577,6 +657,171 @@ namespace adb2_handInProject
                 }
             }
             ListStudents();
+        }
+        #endregion
+
+        //borrows tab
+        #region
+        public void ListBorrows()
+        {
+            borrows_List.Items.Clear();
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.CommandType = CommandType.Text;
+            string cmd = string.Format("SELECT * FROM BORROWS ORDER BY BORROWID");
+            command.CommandText = cmd;
+            command.Connection = connection;
+            OracleDataReader reader = command.ExecuteReader();
+            borrows_List.Items.Add("BORROW_ID | STUDENT_ID | BOOK_ID");
+            while (reader.Read())
+            {
+                borrows_List.Items.Add(string.Format("{0}| {1} | {2}", reader["BORROWID"].ToString(), reader["STUDENTID"].ToString(), reader["BOOKID"].ToString()));
+            }
+        }
+        private void bt_borrows_list_Click(object sender, EventArgs e)
+        {
+            ListBorrows();
+        }
+
+        private void bt_borrows_delete_Click(object sender, EventArgs e)
+        {
+            string selected = borrows_List.SelectedItem.ToString();
+            string id = "";
+            for (int i = 0; i < selected.Length; i++)
+            {
+                if (selected[i] != '|')
+                {
+                    id = id + selected[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.CommandType = CommandType.Text;
+            string cmd = string.Format("DELETE FROM BORROWS WHERE BORROWID = {0}", id);
+            command.CommandText = cmd;
+            command.Connection = connection;
+            try
+            {
+                command.ExecuteNonQuery();
+                ListBorrows();
+            }
+
+            catch (OracleException)
+            {
+                MessageBox.Show("Nem törölhető adat, mert egy másik táblában idegen kulcsként szolgál.");
+            }
+        }
+
+        private void bt_Borrows_add_Click(object sender, EventArgs e)
+        {
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.CommandType = CommandType.Text;
+            string cmd = string.Format("INSERT INTO BORROWS (STUDENTID,BOOKID) VALUES ('{0}',{1})", tb_borrows_add_studentId.Text,tb_borrows_add_bookId.Text);
+            command.CommandText = cmd;
+            command.Connection = connection;
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Oracle.ManagedDataAccess.Client.OracleException)
+            {
+
+                MessageBox.Show("Ellenőrizd, hogy létezik -e már ilyen kulccsal bejegyzés.");
+            }
+            ListBorrows();
+        }
+
+        private void bt_Borrows_Modify_Click(object sender, EventArgs e)
+        {
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            string cmd = string.Format("UPDATE BORROWS SET STUDENTID = '{0}', BOOKID = {1} WHERE BORROWID = {2}", tb_borrows_modify_studentId.Text,tb_borrows_modify_bookId.Text,tb_borrows_modify_borrowid.Text);
+            command.CommandText = cmd;
+            try
+            {
+                command.ExecuteNonQuery();
+            }       
+            catch(OracleException)
+            {
+                MessageBox.Show("Nem változtathatod meg! Ellenőzird az esetleges egyezéseket a többi táblában.");
+            }
+            ListBorrows();
+        }
+
+        private void bt_borrows_DummyData_Click(object sender, EventArgs e)
+        {
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+            Random rnd = new Random();
+            maxIDs();
+
+            for (int i = 0; i < int.Parse(tb_borrows_N_dummyData.Text); i++)
+            {
+                string cmd = string.Format("INSERT INTO BORROWS (STUDENTID,BOOKID) VALUES ('{0}',{1})", maxStudentID++, maxBookID++);
+                command.CommandText = cmd;
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (OracleException)
+                {
+                    
+                }
+            }
+            ListBorrows();
+        }
+
+        #endregion
+
+        private void bt_call_function_Click(object sender, EventArgs e)
+        {
+            OracleConnection connection = new OracleConnection();
+            connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
+            connection.Open();
+            string id = tb_sfcall_id.Text;
+            OracleCommand command = new OracleCommand();
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.CommandText = "checkID";
+            command.Connection = connection;
+            OracleParameter returnValue = new OracleParameter()
+            {
+                Direction = System.Data.ParameterDirection.ReturnValue,
+                DbType = System.Data.DbType.String
+            };
+            command.Parameters.Add(returnValue);
+            OracleParameter checkIDparam = new OracleParameter()
+            {
+                ParameterName = "p_a",
+                Direction = System.Data.ParameterDirection.Input,
+                DbType = System.Data.DbType.Int32,
+                Value = id
+            };
+            command.Parameters.Add(checkIDparam);
+            
+            command.ExecuteNonQuery();
+            //MessageBox.Show(returnValue.Value.ToString());
+            
         }
     }
 }

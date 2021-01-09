@@ -19,6 +19,7 @@ namespace adb2_handInProject
             InitializeComponent();
         }
         public static string isAdmin = "";
+        public static string loggedInUser = "";
         private void bt_newLogin_Click(object sender, EventArgs e)
         {
             OracleConnection connection = new OracleConnection();
@@ -37,7 +38,7 @@ namespace adb2_handInProject
                 {
                     isAdmin = reader["isadmin"].ToString();
                 }
-
+                loggedInUser = reader["USERNAME"].ToString();
                 connection.Close();
                 Thread thread = new Thread(openMain);  
                 thread.SetApartmentState(ApartmentState.STA);

@@ -71,15 +71,11 @@
             this.bt_books_list = new System.Windows.Forms.Button();
             this.bookList = new System.Windows.Forms.ListBox();
             this.tab_Students = new System.Windows.Forms.TabPage();
-            this.students_List = new System.Windows.Forms.ListBox();
-            this.tab_Borrows = new System.Windows.Forms.TabPage();
-            this.label_maxBooksID = new System.Windows.Forms.Label();
-            this.borrows_List = new System.Windows.Forms.ListBox();
-            this.tab_Users = new System.Windows.Forms.TabPage();
-            this.bt_user_list_delete = new System.Windows.Forms.Button();
-            this.bt_register = new System.Windows.Forms.Button();
-            this.bt_usersList = new System.Windows.Forms.Button();
-            this.users_List = new System.Windows.Forms.ListBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tb_students_N_dummyData = new System.Windows.Forms.TextBox();
+            this.bt_students_dummyData = new System.Windows.Forms.Button();
+            this.bt_Students_delete = new System.Windows.Forms.Button();
+            this.bt_Students_list = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -92,29 +88,46 @@
             this.tb_students_add_age = new System.Windows.Forms.TextBox();
             this.bt_students_modify = new System.Windows.Forms.Button();
             this.bt_students_add = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.tb_students_N_dummyData = new System.Windows.Forms.TextBox();
-            this.bt_students_dummyData = new System.Windows.Forms.Button();
-            this.bt_Students_delete = new System.Windows.Forms.Button();
-            this.bt_Students_list = new System.Windows.Forms.Button();
+            this.students_List = new System.Windows.Forms.ListBox();
+            this.tab_Borrows = new System.Windows.Forms.TabPage();
+            this.label26 = new System.Windows.Forms.Label();
+            this.tb_borrows_N_dummyData = new System.Windows.Forms.TextBox();
+            this.bt_borrows_DummyData = new System.Windows.Forms.Button();
+            this.bt_borrows_delete = new System.Windows.Forms.Button();
+            this.bt_borrows_list = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_borrows_modify_borrowid = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.tb_borrows_modify_studentId = new System.Windows.Forms.TextBox();
+            this.tb_borrows_add_studentId = new System.Windows.Forms.TextBox();
+            this.tb_borrows_modify_bookId = new System.Windows.Forms.TextBox();
+            this.tb_borrows_add_bookId = new System.Windows.Forms.TextBox();
+            this.bt_Borrows_Modify = new System.Windows.Forms.Button();
+            this.bt_Borrows_add = new System.Windows.Forms.Button();
+            this.label_maxBooksID = new System.Windows.Forms.Label();
+            this.borrows_List = new System.Windows.Forms.ListBox();
+            this.tab_Users = new System.Windows.Forms.TabPage();
+            this.label_privilege = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label_currectUser = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.bt_user_list_delete = new System.Windows.Forms.Button();
+            this.bt_register = new System.Windows.Forms.Button();
+            this.bt_usersList = new System.Windows.Forms.Button();
+            this.users_List = new System.Windows.Forms.ListBox();
+            this.tab_stored_function = new System.Windows.Forms.TabPage();
+            this.tb_sfcall_id = new System.Windows.Forms.TextBox();
+            this.bt_call_function = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tab_Author.SuspendLayout();
             this.tab_Books.SuspendLayout();
             this.tab_Students.SuspendLayout();
             this.tab_Borrows.SuspendLayout();
             this.tab_Users.SuspendLayout();
+            this.tab_stored_function.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -124,6 +137,7 @@
             this.tabControl1.Controls.Add(this.tab_Students);
             this.tabControl1.Controls.Add(this.tab_Borrows);
             this.tabControl1.Controls.Add(this.tab_Users);
+            this.tabControl1.Controls.Add(this.tab_stored_function);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -553,105 +567,51 @@
             this.tab_Students.Text = "Students";
             this.tab_Students.UseVisualStyleBackColor = true;
             // 
-            // students_List
+            // label20
             // 
-            this.students_List.FormattingEnabled = true;
-            this.students_List.Location = new System.Drawing.Point(283, 19);
-            this.students_List.Name = "students_List";
-            this.students_List.Size = new System.Drawing.Size(498, 368);
-            this.students_List.TabIndex = 0;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(285, 398);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(18, 13);
+            this.label20.TabIndex = 42;
+            this.label20.Text = "N:";
             // 
-            // tab_Borrows
+            // tb_students_N_dummyData
             // 
-            this.tab_Borrows.Controls.Add(this.label21);
-            this.tab_Borrows.Controls.Add(this.label22);
-            this.tab_Borrows.Controls.Add(this.label23);
-            this.tab_Borrows.Controls.Add(this.label24);
-            this.tab_Borrows.Controls.Add(this.textBox1);
-            this.tab_Borrows.Controls.Add(this.label25);
-            this.tab_Borrows.Controls.Add(this.textBox2);
-            this.tab_Borrows.Controls.Add(this.textBox3);
-            this.tab_Borrows.Controls.Add(this.textBox4);
-            this.tab_Borrows.Controls.Add(this.textBox5);
-            this.tab_Borrows.Controls.Add(this.button1);
-            this.tab_Borrows.Controls.Add(this.button3);
-            this.tab_Borrows.Controls.Add(this.label_maxBooksID);
-            this.tab_Borrows.Controls.Add(this.borrows_List);
-            this.tab_Borrows.Location = new System.Drawing.Point(4, 22);
-            this.tab_Borrows.Name = "tab_Borrows";
-            this.tab_Borrows.Size = new System.Drawing.Size(792, 424);
-            this.tab_Borrows.TabIndex = 2;
-            this.tab_Borrows.Text = "Borrows";
-            this.tab_Borrows.UseVisualStyleBackColor = true;
+            this.tb_students_N_dummyData.Location = new System.Drawing.Point(309, 395);
+            this.tb_students_N_dummyData.Name = "tb_students_N_dummyData";
+            this.tb_students_N_dummyData.Size = new System.Drawing.Size(100, 20);
+            this.tb_students_N_dummyData.TabIndex = 41;
             // 
-            // label_maxBooksID
+            // bt_students_dummyData
             // 
-            this.label_maxBooksID.AutoSize = true;
-            this.label_maxBooksID.Location = new System.Drawing.Point(186, 406);
-            this.label_maxBooksID.Name = "label_maxBooksID";
-            this.label_maxBooksID.Size = new System.Drawing.Size(41, 13);
-            this.label_maxBooksID.TabIndex = 1;
-            this.label_maxBooksID.Text = "label15";
+            this.bt_students_dummyData.Location = new System.Drawing.Point(415, 393);
+            this.bt_students_dummyData.Name = "bt_students_dummyData";
+            this.bt_students_dummyData.Size = new System.Drawing.Size(161, 23);
+            this.bt_students_dummyData.TabIndex = 40;
+            this.bt_students_dummyData.Text = "Generate N dummy data";
+            this.bt_students_dummyData.UseVisualStyleBackColor = true;
+            this.bt_students_dummyData.Click += new System.EventHandler(this.bt_students_dummyData_Click);
             // 
-            // borrows_List
+            // bt_Students_delete
             // 
-            this.borrows_List.FormattingEnabled = true;
-            this.borrows_List.Location = new System.Drawing.Point(233, 3);
-            this.borrows_List.Name = "borrows_List";
-            this.borrows_List.Size = new System.Drawing.Size(556, 407);
-            this.borrows_List.TabIndex = 0;
+            this.bt_Students_delete.Location = new System.Drawing.Point(625, 393);
+            this.bt_Students_delete.Name = "bt_Students_delete";
+            this.bt_Students_delete.Size = new System.Drawing.Size(75, 23);
+            this.bt_Students_delete.TabIndex = 39;
+            this.bt_Students_delete.Text = "Delete";
+            this.bt_Students_delete.UseVisualStyleBackColor = true;
+            this.bt_Students_delete.Click += new System.EventHandler(this.bt_Students_delete_Click);
             // 
-            // tab_Users
+            // bt_Students_list
             // 
-            this.tab_Users.Controls.Add(this.bt_user_list_delete);
-            this.tab_Users.Controls.Add(this.bt_register);
-            this.tab_Users.Controls.Add(this.bt_usersList);
-            this.tab_Users.Controls.Add(this.users_List);
-            this.tab_Users.Location = new System.Drawing.Point(4, 22);
-            this.tab_Users.Name = "tab_Users";
-            this.tab_Users.Size = new System.Drawing.Size(792, 424);
-            this.tab_Users.TabIndex = 4;
-            this.tab_Users.Text = "Users";
-            this.tab_Users.UseVisualStyleBackColor = true;
-            this.tab_Users.Click += new System.EventHandler(this.tab_Users_Click);
-            // 
-            // bt_user_list_delete
-            // 
-            this.bt_user_list_delete.Location = new System.Drawing.Point(628, 390);
-            this.bt_user_list_delete.Name = "bt_user_list_delete";
-            this.bt_user_list_delete.Size = new System.Drawing.Size(75, 23);
-            this.bt_user_list_delete.TabIndex = 1;
-            this.bt_user_list_delete.Text = "Delete";
-            this.bt_user_list_delete.UseVisualStyleBackColor = true;
-            this.bt_user_list_delete.Click += new System.EventHandler(this.bt_register_Click);
-            // 
-            // bt_register
-            // 
-            this.bt_register.Location = new System.Drawing.Point(547, 390);
-            this.bt_register.Name = "bt_register";
-            this.bt_register.Size = new System.Drawing.Size(75, 23);
-            this.bt_register.TabIndex = 1;
-            this.bt_register.Text = "Register";
-            this.bt_register.UseVisualStyleBackColor = true;
-            this.bt_register.Click += new System.EventHandler(this.bt_register_Click);
-            // 
-            // bt_usersList
-            // 
-            this.bt_usersList.Location = new System.Drawing.Point(709, 390);
-            this.bt_usersList.Name = "bt_usersList";
-            this.bt_usersList.Size = new System.Drawing.Size(75, 23);
-            this.bt_usersList.TabIndex = 1;
-            this.bt_usersList.Text = "List";
-            this.bt_usersList.UseVisualStyleBackColor = true;
-            this.bt_usersList.Click += new System.EventHandler(this.bt_usersList_Click);
-            // 
-            // users_List
-            // 
-            this.users_List.FormattingEnabled = true;
-            this.users_List.Location = new System.Drawing.Point(268, 3);
-            this.users_List.Name = "users_List";
-            this.users_List.Size = new System.Drawing.Size(516, 381);
-            this.users_List.TabIndex = 0;
+            this.bt_Students_list.Location = new System.Drawing.Point(706, 393);
+            this.bt_Students_list.Name = "bt_Students_list";
+            this.bt_Students_list.Size = new System.Drawing.Size(75, 23);
+            this.bt_Students_list.TabIndex = 38;
+            this.bt_Students_list.Text = "List";
+            this.bt_Students_list.UseVisualStyleBackColor = true;
+            this.bt_Students_list.Click += new System.EventHandler(this.bt_Students_list_Click);
             // 
             // label15
             // 
@@ -753,149 +713,324 @@
             this.bt_students_add.UseVisualStyleBackColor = true;
             this.bt_students_add.Click += new System.EventHandler(this.bt_students_add_Click);
             // 
-            // label20
+            // students_List
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(285, 398);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(18, 13);
-            this.label20.TabIndex = 42;
-            this.label20.Text = "N:";
+            this.students_List.FormattingEnabled = true;
+            this.students_List.Location = new System.Drawing.Point(283, 19);
+            this.students_List.Name = "students_List";
+            this.students_List.Size = new System.Drawing.Size(498, 368);
+            this.students_List.TabIndex = 0;
             // 
-            // tb_students_N_dummyData
+            // tab_Borrows
             // 
-            this.tb_students_N_dummyData.Location = new System.Drawing.Point(309, 395);
-            this.tb_students_N_dummyData.Name = "tb_students_N_dummyData";
-            this.tb_students_N_dummyData.Size = new System.Drawing.Size(100, 20);
-            this.tb_students_N_dummyData.TabIndex = 41;
+            this.tab_Borrows.Controls.Add(this.label26);
+            this.tab_Borrows.Controls.Add(this.tb_borrows_N_dummyData);
+            this.tab_Borrows.Controls.Add(this.bt_borrows_DummyData);
+            this.tab_Borrows.Controls.Add(this.bt_borrows_delete);
+            this.tab_Borrows.Controls.Add(this.bt_borrows_list);
+            this.tab_Borrows.Controls.Add(this.label21);
+            this.tab_Borrows.Controls.Add(this.label22);
+            this.tab_Borrows.Controls.Add(this.label23);
+            this.tab_Borrows.Controls.Add(this.label24);
+            this.tab_Borrows.Controls.Add(this.tb_borrows_modify_borrowid);
+            this.tab_Borrows.Controls.Add(this.label25);
+            this.tab_Borrows.Controls.Add(this.tb_borrows_modify_studentId);
+            this.tab_Borrows.Controls.Add(this.tb_borrows_add_studentId);
+            this.tab_Borrows.Controls.Add(this.tb_borrows_modify_bookId);
+            this.tab_Borrows.Controls.Add(this.tb_borrows_add_bookId);
+            this.tab_Borrows.Controls.Add(this.bt_Borrows_Modify);
+            this.tab_Borrows.Controls.Add(this.bt_Borrows_add);
+            this.tab_Borrows.Controls.Add(this.label_maxBooksID);
+            this.tab_Borrows.Controls.Add(this.borrows_List);
+            this.tab_Borrows.Location = new System.Drawing.Point(4, 22);
+            this.tab_Borrows.Name = "tab_Borrows";
+            this.tab_Borrows.Size = new System.Drawing.Size(792, 424);
+            this.tab_Borrows.TabIndex = 2;
+            this.tab_Borrows.Text = "Borrows";
+            this.tab_Borrows.UseVisualStyleBackColor = true;
             // 
-            // bt_students_dummyData
+            // label26
             // 
-            this.bt_students_dummyData.Location = new System.Drawing.Point(415, 393);
-            this.bt_students_dummyData.Name = "bt_students_dummyData";
-            this.bt_students_dummyData.Size = new System.Drawing.Size(161, 23);
-            this.bt_students_dummyData.TabIndex = 40;
-            this.bt_students_dummyData.Text = "Generate N dummy data";
-            this.bt_students_dummyData.UseVisualStyleBackColor = true;
-            this.bt_students_dummyData.Click += new System.EventHandler(this.bt_students_dummyData_Click);
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(279, 398);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(18, 13);
+            this.label26.TabIndex = 54;
+            this.label26.Text = "N:";
             // 
-            // bt_Students_delete
+            // tb_borrows_N_dummyData
             // 
-            this.bt_Students_delete.Location = new System.Drawing.Point(625, 393);
-            this.bt_Students_delete.Name = "bt_Students_delete";
-            this.bt_Students_delete.Size = new System.Drawing.Size(75, 23);
-            this.bt_Students_delete.TabIndex = 39;
-            this.bt_Students_delete.Text = "Delete";
-            this.bt_Students_delete.UseVisualStyleBackColor = true;
-            this.bt_Students_delete.Click += new System.EventHandler(this.bt_Students_delete_Click);
+            this.tb_borrows_N_dummyData.Location = new System.Drawing.Point(303, 395);
+            this.tb_borrows_N_dummyData.Name = "tb_borrows_N_dummyData";
+            this.tb_borrows_N_dummyData.Size = new System.Drawing.Size(100, 20);
+            this.tb_borrows_N_dummyData.TabIndex = 53;
             // 
-            // bt_Students_list
+            // bt_borrows_DummyData
             // 
-            this.bt_Students_list.Location = new System.Drawing.Point(706, 393);
-            this.bt_Students_list.Name = "bt_Students_list";
-            this.bt_Students_list.Size = new System.Drawing.Size(75, 23);
-            this.bt_Students_list.TabIndex = 38;
-            this.bt_Students_list.Text = "List";
-            this.bt_Students_list.UseVisualStyleBackColor = true;
-            this.bt_Students_list.Click += new System.EventHandler(this.bt_Students_list_Click);
+            this.bt_borrows_DummyData.Location = new System.Drawing.Point(409, 393);
+            this.bt_borrows_DummyData.Name = "bt_borrows_DummyData";
+            this.bt_borrows_DummyData.Size = new System.Drawing.Size(161, 23);
+            this.bt_borrows_DummyData.TabIndex = 52;
+            this.bt_borrows_DummyData.Text = "Generate N dummy data";
+            this.bt_borrows_DummyData.UseVisualStyleBackColor = true;
+            this.bt_borrows_DummyData.Click += new System.EventHandler(this.bt_borrows_DummyData_Click);
+            // 
+            // bt_borrows_delete
+            // 
+            this.bt_borrows_delete.Location = new System.Drawing.Point(619, 393);
+            this.bt_borrows_delete.Name = "bt_borrows_delete";
+            this.bt_borrows_delete.Size = new System.Drawing.Size(75, 23);
+            this.bt_borrows_delete.TabIndex = 51;
+            this.bt_borrows_delete.Text = "Delete";
+            this.bt_borrows_delete.UseVisualStyleBackColor = true;
+            this.bt_borrows_delete.Click += new System.EventHandler(this.bt_borrows_delete_Click);
+            // 
+            // bt_borrows_list
+            // 
+            this.bt_borrows_list.Location = new System.Drawing.Point(700, 393);
+            this.bt_borrows_list.Name = "bt_borrows_list";
+            this.bt_borrows_list.Size = new System.Drawing.Size(75, 23);
+            this.bt_borrows_list.TabIndex = 50;
+            this.bt_borrows_list.Text = "List";
+            this.bt_borrows_list.UseVisualStyleBackColor = true;
+            this.bt_borrows_list.Click += new System.EventHandler(this.bt_borrows_list_Click);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(23, 239);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(68, 13);
+            this.label21.Size = new System.Drawing.Size(54, 13);
             this.label21.TabIndex = 49;
-            this.label21.Text = "Student age:";
+            this.label21.Text = "BOOK ID:";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(71, 60);
+            this.label22.Location = new System.Drawing.Point(45, 60);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(28, 13);
+            this.label22.Size = new System.Drawing.Size(46, 13);
             this.label22.TabIndex = 48;
-            this.label22.Text = "age:";
+            this.label22.Text = "Book ID";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(23, 188);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(58, 13);
+            this.label23.Size = new System.Drawing.Size(54, 13);
             this.label23.TabIndex = 46;
-            this.label23.Text = "Student ID";
+            this.label23.Text = "Borrow ID";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(23, 213);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(73, 13);
+            this.label24.Size = new System.Drawing.Size(58, 13);
             this.label24.TabIndex = 47;
-            this.label24.Text = "Student name";
+            this.label24.Text = "Student ID";
             // 
-            // textBox1
+            // tb_borrows_modify_borrowid
             // 
-            this.textBox1.Location = new System.Drawing.Point(99, 185);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 43;
+            this.tb_borrows_modify_borrowid.Location = new System.Drawing.Point(99, 185);
+            this.tb_borrows_modify_borrowid.Name = "tb_borrows_modify_borrowid";
+            this.tb_borrows_modify_borrowid.Size = new System.Drawing.Size(100, 20);
+            this.tb_borrows_modify_borrowid.TabIndex = 43;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(23, 34);
+            this.label25.Location = new System.Drawing.Point(33, 34);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(76, 13);
+            this.label25.Size = new System.Drawing.Size(58, 13);
             this.label25.TabIndex = 45;
-            this.label25.Text = "Student name:";
+            this.label25.Text = "Student ID";
             // 
-            // textBox2
+            // tb_borrows_modify_studentId
             // 
-            this.textBox2.Location = new System.Drawing.Point(99, 210);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 44;
+            this.tb_borrows_modify_studentId.Location = new System.Drawing.Point(99, 210);
+            this.tb_borrows_modify_studentId.Name = "tb_borrows_modify_studentId";
+            this.tb_borrows_modify_studentId.Size = new System.Drawing.Size(100, 20);
+            this.tb_borrows_modify_studentId.TabIndex = 44;
             // 
-            // textBox3
+            // tb_borrows_add_studentId
             // 
-            this.textBox3.Location = new System.Drawing.Point(99, 31);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 42;
+            this.tb_borrows_add_studentId.Location = new System.Drawing.Point(99, 31);
+            this.tb_borrows_add_studentId.Name = "tb_borrows_add_studentId";
+            this.tb_borrows_add_studentId.Size = new System.Drawing.Size(100, 20);
+            this.tb_borrows_add_studentId.TabIndex = 42;
             // 
-            // textBox4
+            // tb_borrows_modify_bookId
             // 
-            this.textBox4.Location = new System.Drawing.Point(99, 236);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 41;
+            this.tb_borrows_modify_bookId.Location = new System.Drawing.Point(99, 236);
+            this.tb_borrows_modify_bookId.Name = "tb_borrows_modify_bookId";
+            this.tb_borrows_modify_bookId.Size = new System.Drawing.Size(100, 20);
+            this.tb_borrows_modify_bookId.TabIndex = 41;
             // 
-            // textBox5
+            // tb_borrows_add_bookId
             // 
-            this.textBox5.Location = new System.Drawing.Point(99, 57);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 40;
+            this.tb_borrows_add_bookId.Location = new System.Drawing.Point(99, 57);
+            this.tb_borrows_add_bookId.Name = "tb_borrows_add_bookId";
+            this.tb_borrows_add_bookId.Size = new System.Drawing.Size(100, 20);
+            this.tb_borrows_add_bookId.TabIndex = 40;
             // 
-            // button1
+            // bt_Borrows_Modify
             // 
-            this.button1.Location = new System.Drawing.Point(78, 262);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 23);
-            this.button1.TabIndex = 39;
-            this.button1.Text = "Modify (through ID)";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bt_Borrows_Modify.Location = new System.Drawing.Point(78, 262);
+            this.bt_Borrows_Modify.Name = "bt_Borrows_Modify";
+            this.bt_Borrows_Modify.Size = new System.Drawing.Size(121, 23);
+            this.bt_Borrows_Modify.TabIndex = 39;
+            this.bt_Borrows_Modify.Text = "Modify (through ID)";
+            this.bt_Borrows_Modify.UseVisualStyleBackColor = true;
+            this.bt_Borrows_Modify.Click += new System.EventHandler(this.bt_Borrows_Modify_Click);
             // 
-            // button3
+            // bt_Borrows_add
             // 
-            this.button3.Location = new System.Drawing.Point(99, 83);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 38;
-            this.button3.Text = "Add";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bt_Borrows_add.Location = new System.Drawing.Point(99, 83);
+            this.bt_Borrows_add.Name = "bt_Borrows_add";
+            this.bt_Borrows_add.Size = new System.Drawing.Size(75, 23);
+            this.bt_Borrows_add.TabIndex = 38;
+            this.bt_Borrows_add.Text = "Add";
+            this.bt_Borrows_add.UseVisualStyleBackColor = true;
+            this.bt_Borrows_add.Click += new System.EventHandler(this.bt_Borrows_add_Click);
+            // 
+            // label_maxBooksID
+            // 
+            this.label_maxBooksID.AutoSize = true;
+            this.label_maxBooksID.Location = new System.Drawing.Point(96, 371);
+            this.label_maxBooksID.Name = "label_maxBooksID";
+            this.label_maxBooksID.Size = new System.Drawing.Size(41, 13);
+            this.label_maxBooksID.TabIndex = 1;
+            this.label_maxBooksID.Text = "label15";
+            // 
+            // borrows_List
+            // 
+            this.borrows_List.FormattingEnabled = true;
+            this.borrows_List.Location = new System.Drawing.Point(233, 3);
+            this.borrows_List.Name = "borrows_List";
+            this.borrows_List.Size = new System.Drawing.Size(556, 381);
+            this.borrows_List.TabIndex = 0;
+            // 
+            // tab_Users
+            // 
+            this.tab_Users.Controls.Add(this.label_privilege);
+            this.tab_Users.Controls.Add(this.label28);
+            this.tab_Users.Controls.Add(this.label_currectUser);
+            this.tab_Users.Controls.Add(this.label27);
+            this.tab_Users.Controls.Add(this.bt_user_list_delete);
+            this.tab_Users.Controls.Add(this.bt_register);
+            this.tab_Users.Controls.Add(this.bt_usersList);
+            this.tab_Users.Controls.Add(this.users_List);
+            this.tab_Users.Location = new System.Drawing.Point(4, 22);
+            this.tab_Users.Name = "tab_Users";
+            this.tab_Users.Size = new System.Drawing.Size(792, 424);
+            this.tab_Users.TabIndex = 4;
+            this.tab_Users.Text = "Users";
+            this.tab_Users.UseVisualStyleBackColor = true;
+            this.tab_Users.Click += new System.EventHandler(this.tab_Users_Click);
+            // 
+            // label_privilege
+            // 
+            this.label_privilege.AutoSize = true;
+            this.label_privilege.Location = new System.Drawing.Point(433, 395);
+            this.label_privilege.Name = "label_privilege";
+            this.label_privilege.Size = new System.Drawing.Size(74, 13);
+            this.label_privilege.TabIndex = 5;
+            this.label_privilege.Text = "label_privilege";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(385, 395);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(50, 13);
+            this.label28.TabIndex = 4;
+            this.label28.Text = "Privilege:";
+            // 
+            // label_currectUser
+            // 
+            this.label_currectUser.AutoSize = true;
+            this.label_currectUser.Location = new System.Drawing.Point(288, 395);
+            this.label_currectUser.Name = "label_currectUser";
+            this.label_currectUser.Size = new System.Drawing.Size(90, 13);
+            this.label_currectUser.TabIndex = 3;
+            this.label_currectUser.Text = "label_currectUser";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(212, 395);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(79, 13);
+            this.label27.TabIndex = 2;
+            this.label27.Text = "Logged in with:";
+            // 
+            // bt_user_list_delete
+            // 
+            this.bt_user_list_delete.Location = new System.Drawing.Point(628, 390);
+            this.bt_user_list_delete.Name = "bt_user_list_delete";
+            this.bt_user_list_delete.Size = new System.Drawing.Size(75, 23);
+            this.bt_user_list_delete.TabIndex = 1;
+            this.bt_user_list_delete.Text = "Delete";
+            this.bt_user_list_delete.UseVisualStyleBackColor = true;
+            this.bt_user_list_delete.Click += new System.EventHandler(this.bt_user_list_delete_Click);
+            // 
+            // bt_register
+            // 
+            this.bt_register.Location = new System.Drawing.Point(547, 390);
+            this.bt_register.Name = "bt_register";
+            this.bt_register.Size = new System.Drawing.Size(75, 23);
+            this.bt_register.TabIndex = 1;
+            this.bt_register.Text = "Register";
+            this.bt_register.UseVisualStyleBackColor = true;
+            this.bt_register.Click += new System.EventHandler(this.bt_register_Click);
+            // 
+            // bt_usersList
+            // 
+            this.bt_usersList.Location = new System.Drawing.Point(709, 390);
+            this.bt_usersList.Name = "bt_usersList";
+            this.bt_usersList.Size = new System.Drawing.Size(75, 23);
+            this.bt_usersList.TabIndex = 1;
+            this.bt_usersList.Text = "List";
+            this.bt_usersList.UseVisualStyleBackColor = true;
+            this.bt_usersList.Click += new System.EventHandler(this.bt_usersList_Click);
+            // 
+            // users_List
+            // 
+            this.users_List.FormattingEnabled = true;
+            this.users_List.Location = new System.Drawing.Point(268, 3);
+            this.users_List.Name = "users_List";
+            this.users_List.Size = new System.Drawing.Size(516, 381);
+            this.users_List.TabIndex = 0;
+            // 
+            // tab_stored_function
+            // 
+            this.tab_stored_function.Controls.Add(this.bt_call_function);
+            this.tab_stored_function.Controls.Add(this.tb_sfcall_id);
+            this.tab_stored_function.Location = new System.Drawing.Point(4, 22);
+            this.tab_stored_function.Name = "tab_stored_function";
+            this.tab_stored_function.Size = new System.Drawing.Size(792, 424);
+            this.tab_stored_function.TabIndex = 5;
+            this.tab_stored_function.Text = "Tárolt eljárás";
+            this.tab_stored_function.UseVisualStyleBackColor = true;
+            // 
+            // tb_sfcall_id
+            // 
+            this.tb_sfcall_id.Location = new System.Drawing.Point(312, 177);
+            this.tb_sfcall_id.Name = "tb_sfcall_id";
+            this.tb_sfcall_id.Size = new System.Drawing.Size(100, 20);
+            this.tb_sfcall_id.TabIndex = 0;
+            // 
+            // bt_call_function
+            // 
+            this.bt_call_function.Location = new System.Drawing.Point(326, 203);
+            this.bt_call_function.Name = "bt_call_function";
+            this.bt_call_function.Size = new System.Drawing.Size(75, 23);
+            this.bt_call_function.TabIndex = 1;
+            this.bt_call_function.Text = "Click this if you dare";
+            this.bt_call_function.UseVisualStyleBackColor = true;
+            this.bt_call_function.Click += new System.EventHandler(this.bt_call_function_Click);
             // 
             // Main
             // 
@@ -915,6 +1050,9 @@
             this.tab_Borrows.ResumeLayout(false);
             this.tab_Borrows.PerformLayout();
             this.tab_Users.ResumeLayout(false);
+            this.tab_Users.PerformLayout();
+            this.tab_stored_function.ResumeLayout(false);
+            this.tab_stored_function.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -994,14 +1132,26 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_borrows_modify_borrowid;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox tb_borrows_modify_studentId;
+        private System.Windows.Forms.TextBox tb_borrows_add_studentId;
+        private System.Windows.Forms.TextBox tb_borrows_modify_bookId;
+        private System.Windows.Forms.TextBox tb_borrows_add_bookId;
+        private System.Windows.Forms.Button bt_Borrows_Modify;
+        private System.Windows.Forms.Button bt_Borrows_add;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox tb_borrows_N_dummyData;
+        private System.Windows.Forms.Button bt_borrows_DummyData;
+        private System.Windows.Forms.Button bt_borrows_delete;
+        private System.Windows.Forms.Button bt_borrows_list;
+        private System.Windows.Forms.Label label_currectUser;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label_privilege;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TabPage tab_stored_function;
+        private System.Windows.Forms.Button bt_call_function;
+        private System.Windows.Forms.TextBox tb_sfcall_id;
     }
 }
 
