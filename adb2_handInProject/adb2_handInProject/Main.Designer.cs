@@ -121,6 +121,7 @@
             this.tab_stored_function = new System.Windows.Forms.TabPage();
             this.tb_sfcall_id = new System.Windows.Forms.TextBox();
             this.bt_call_function = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Author.SuspendLayout();
             this.tab_Books.SuspendLayout();
@@ -1006,6 +1007,7 @@
             // 
             // tab_stored_function
             // 
+            this.tab_stored_function.Controls.Add(this.label29);
             this.tab_stored_function.Controls.Add(this.bt_call_function);
             this.tab_stored_function.Controls.Add(this.tb_sfcall_id);
             this.tab_stored_function.Location = new System.Drawing.Point(4, 22);
@@ -1024,13 +1026,22 @@
             // 
             // bt_call_function
             // 
-            this.bt_call_function.Location = new System.Drawing.Point(326, 203);
+            this.bt_call_function.Location = new System.Drawing.Point(277, 203);
             this.bt_call_function.Name = "bt_call_function";
-            this.bt_call_function.Size = new System.Drawing.Size(75, 23);
+            this.bt_call_function.Size = new System.Drawing.Size(164, 23);
             this.bt_call_function.TabIndex = 1;
-            this.bt_call_function.Text = "Click this if you dare";
+            this.bt_call_function.Text = "Check";
             this.bt_call_function.UseVisualStyleBackColor = true;
             this.bt_call_function.Click += new System.EventHandler(this.bt_call_function_Click);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(208, 149);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(310, 13);
+            this.label29.TabIndex = 2;
+            this.label29.Text = "Írj be egy számot, ellenőrzöm, hogy milyen ID-ként használhatod.";
             // 
             // Main
             // 
@@ -1152,6 +1163,7 @@
         private System.Windows.Forms.TabPage tab_stored_function;
         private System.Windows.Forms.Button bt_call_function;
         private System.Windows.Forms.TextBox tb_sfcall_id;
+        private System.Windows.Forms.Label label29;
     }
 }
 

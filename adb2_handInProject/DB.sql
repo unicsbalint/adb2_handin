@@ -126,6 +126,50 @@ CREATE  TABLE LOG(
 log_message varchar(250)
 );
 
+CREATE OR REPLACE FUNCTION checkID(
+    p_a IN INT
+) RETURN VARCHAR2 IS
+     p_result VARCHAR2(40);
+BEGIN
+     IF ((p_a > 1 AND p_a < 1000) OR p_a = 1000) then
+     p_result := 'authorid';
+     return p_result;
+     END IF;
+     IF (p_a > 1000 AND p_a < 2000) then
+     p_result := 'bookid';
+     return p_result;
+     end if;
+     IF (p_a < 3000  AND p_a > 2000) then
+     p_result := 'borrowid';
+     return p_result;
+     end if;
+     IF (p_a > 3000) then
+     p_result := 'studentid';
+     return p_result;
+     end if;
+     
+     return 'nem j?';
+END checkID;
+
+DECLARE p_a NUMBER := 1111; v_result VARCHAR2(20); BEGIN v_result := CHECKID(p_a); END;
+
+
+DECLARE
+CURSOR C_BOOKS IS SELECT * FROM BOOKS;
+BOOKS_REC BOOKS%ROWTYPE;
+BEGIN
+OPEN C_BOOKS;
+FETCH C_BOOKS into BOOKS_REC;
+CLOSE C_BOOKS;
+END;
+
+
+
+
+
+
+
+
 --SOME DUMMY DATA
 INSERT INTO author (authorId,authorName,numberofBooks) VALUES (1,'Kiss Pal',42);
 INSERT INTO author (authorId,authorName,numberofBooks) VALUES (2,'Nagy Zoltan Pal',2);

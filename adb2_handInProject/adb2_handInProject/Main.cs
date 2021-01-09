@@ -9,12 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-/*
-         * Teendők:
-         * Dummy adatokkal feltöltés megvalósítása C# -on belül, auto increment implementálása oracleben,
-         * students, borrows fül felépítése az eddigiek alapján.
-         * authorid tartomány: 1-1000, bookid tartomány 1001-2000, borrowid tartomány: 2001-3000, studentid tartomány: 3001-,         
-         * */
+
+         // authorid tartomány: 1-1000, bookid tartomány 1001-2000, borrowid tartomány: 2001-3000, studentid tartomány: 3001-,         
+         
 namespace adb2_handInProject
 {
     public partial class Main : Form
@@ -434,7 +431,6 @@ namespace adb2_handInProject
 
         #endregion
 
-
         //users tab
         #region
         private void bt_usersList_Click(object sender, EventArgs e)
@@ -799,15 +795,28 @@ namespace adb2_handInProject
             OracleConnection connection = new OracleConnection();
             connection.ConnectionString = @"Data Source=193.225.33.71;User Id=QPS1MZ;Password=EKE2020;";
             connection.Open();
-            string id = tb_sfcall_id.Text;
-            OracleCommand command = new OracleCommand();
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.CommandText = "checkID";
-            command.Connection = connection;
+            int id = 0;
+            try
+            {
+                id = int.Parse(tb_sfcall_id.Text);
+            }
+            catch(System.FormatException)
+            {
+                MessageBox.Show("Számot írj be.");
+            }
+            
+            OracleCommand command = new OracleCommand()
+            {
+                CommandType = System.Data.CommandType.StoredProcedure,
+                CommandText = "CHECKID",
+                Connection = connection
+            };
+
             OracleParameter returnValue = new OracleParameter()
             {
                 Direction = System.Data.ParameterDirection.ReturnValue,
-                DbType = System.Data.DbType.String
+                Size = 2000,
+               DbType = System.Data.DbType.String
             };
             command.Parameters.Add(returnValue);
             OracleParameter checkIDparam = new OracleParameter()
@@ -815,12 +824,13 @@ namespace adb2_handInProject
                 ParameterName = "p_a",
                 Direction = System.Data.ParameterDirection.Input,
                 DbType = System.Data.DbType.Int32,
+                Size = 3000,            
                 Value = id
             };
-            command.Parameters.Add(checkIDparam);
             
+            command.Parameters.Add(checkIDparam);
             command.ExecuteNonQuery();
-            //MessageBox.Show(returnValue.Value.ToString());
+            MessageBox.Show(returnValue.Value.ToString());
             
         }
     }
